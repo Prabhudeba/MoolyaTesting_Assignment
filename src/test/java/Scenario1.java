@@ -31,12 +31,15 @@ public class Scenario1 {
 
     @Test
     public void changeColorIfMore(){
-
+        
+        System.out.println("My commit-2");
 
     }
 
     @Test
     public void changeSIze(){
+
+        System.out.println("My commit-2");
 
     }
 
