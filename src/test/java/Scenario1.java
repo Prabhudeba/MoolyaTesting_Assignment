@@ -12,7 +12,7 @@ public class Scenario1 {
     private Actions action;
     private Scenario1OjectRepositories scenario1;
 
-    @Test
+    @Test(priority=0)
     public void setupURL() throws InterruptedException {
         System.setProperty("webdriver.chrome.driver","driver\\chromedriver.exe");
         driver=new ChromeDriver();
@@ -20,7 +20,7 @@ public class Scenario1 {
         String URL="http://automationpractice.com/";
         driver.get(URL);
     }
-    @Test
+    @Test(priority=1)
     public void selectingToCart(){
 
         Assert.assertTrue(scenario1.getWomenCategory().isDisplayed());
@@ -29,18 +29,9 @@ public class Scenario1 {
         action.click(scenario1.addButtonByPrice("27","More")).build().perform();
     }
 
-    @Test
-    public void changeColorIfMore(){
 
 
-    }
-
-    @Test
-    public void changeSIze(){
-
-    }
-
-    @Test
+    @Test(priority=2)
     public void addingToCart(){
         scenario1.addCartBtn().click();
         Assert.assertTrue(scenario1.proceedTochekout().isDisplayed(),"Successfully added to shopping cart page");
@@ -50,7 +41,7 @@ public class Scenario1 {
 
     }
 
-    @Test
+    @Test(priority=3)
     public void signInForm(){
         scenario1.EmailAddressInput().sendKeys("");
         scenario1.passwordInput().sendKeys("");
@@ -58,7 +49,7 @@ public class Scenario1 {
 
     }
 
-    @Test
+    @Test(priority=4)
     public void addressFillup(){
         scenario1.addressInput().sendKeys("House-11");
         scenario1.cityInput().sendKeys("Bangalore");
@@ -70,29 +61,21 @@ public class Scenario1 {
         scenario1.saveBtn().click();
     }
 
-    @Test
+    @Test(priority=5)
     public void shippingForm(){
-    scenario1.getCartSummTermsOfServiceCheck().click();
-    scenario1.getCartProceedBtnTwo().click();
+        scenario1.getCartSummTermsOfServiceCheck().click();
+        scenario1.getCartProceedBtnTwo().click();
     }
-    @Test
+    @Test(priority=6)
     public void paymentInformation() {
         scenario1.CartSummPayByBankWire().click();
         Assert.assertEquals(scenario1.getCartPaymentConfirm().getText(), "BANK-WIRE PAYMENT.");
 
     }
-    @Test
+    @Test(priority=7)
     public void confirmOrder(){
         scenario1.CartSummConfirmOrderBtn().click();
         Assert.assertTrue(scenario1.getCartSummSuccessMsg().isDisplayed());
         Assert.assertEquals(scenario1.getCartSummSuccessMsg().getText(), "Your order on My Store is complete.");
     }
-
-
-
-
-
-
-
-
 }
